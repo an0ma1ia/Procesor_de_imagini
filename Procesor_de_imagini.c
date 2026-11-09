@@ -112,17 +112,17 @@
 
 
         // task 3
-        // rectangle(image, N, M, 300, 550, 35, 510, 5);   // deseneaza un dreptunghi rosu de grosime k la coordonatele date
-        // rectangle(image, N, M, 560, 750, 180, 470, 5);
+        rectangle(image, N, M, 300, 550, 35, 510, 5);   // deseneaza un dreptunghi rosu de grosime k la coordonatele date
+        rectangle(image, N, M, 560, 750, 180, 470, 5);
 
 
         // task 4
         int crop_N, crop_M;
-        //unsigned char ***cropped_image = cropped (image, N, M, 300, 550, 35, 510, &crop_N, &crop_M);   // da crop la dreptunghiul determinat de coordonatele date
+        unsigned char ***cropped_image = cropped (image, N, M, 300, 550, 35, 510, &crop_N, &crop_M);   // da crop la dreptunghiul determinat de coordonatele date
 
 
         // task 5
-        //average_rgb (image, N, M);   // fiecare pixel ia valoarea mediei dintre r, g, b (grayscale)
+        average_rgb (image, N, M);   // fiecare pixel ia valoarea mediei dintre r, g, b (grayscale)
 
 
         // task 6
@@ -130,10 +130,10 @@
         unsigned char ***square = square_format (image, N, M, &square_size);
 
 
-        // afisarea imaginii
-        // bmp_write ("/home/amalia/Diverse/Personal_projects/output.bmp", image, N, M);
-        // bmp_write ("/home/amalia/Diverse/Personal_projects/cropped.bmp", cropped_image, crop_N, crop_M);
-        // bmp_write ("/home/amalia/Diverse/Personal_projects/average.bmp", image, N, M);
+        afisarea imaginii
+        bmp_write ("/home/amalia/Diverse/Personal_projects/output.bmp", image, N, M);
+        bmp_write ("/home/amalia/Diverse/Personal_projects/cropped.bmp", cropped_image, crop_N, crop_M);
+        bmp_write ("/home/amalia/Diverse/Personal_projects/average.bmp", image, N, M);
         bmp_write ("/home/amalia/Diverse/Personal_projects/square.bmp", square, square_size, square_size);
 
 
@@ -144,12 +144,12 @@
         }
         free (image);
 
-        // for (int i = 0; i < crop_N; i ++) {
-        //     for (int j = 0; j < crop_M; j ++) 
-        //         free (cropped_image[i][j]);
-        //     free (cropped_image[i]);
-        // }
-        // free (cropped_image);
+        for (int i = 0; i < crop_N; i ++) {
+            for (int j = 0; j < crop_M; j ++) 
+                free (cropped_image[i][j]);
+            free (cropped_image[i]);
+        }
+        free (cropped_image);
 
         for (int i = 0; i < square_size; i ++) {
             for (int j = 0; j < square_size; j ++) 
